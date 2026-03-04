@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmauta5nxahmi"
+path="res://.godot/imported/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3-88e7cc68e722698affa597ae7d5a629d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3"
+dest_files=["res://.godot/imported/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3-88e7cc68e722698affa597ae7d5a629d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
