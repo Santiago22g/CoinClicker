@@ -1,5 +1,5 @@
 # Project: CoinForge
-# The Wealth Paradox
+# Minting Fortune
 
 ![Status](https://img.shields.io/badge/Status-In--Development-orange?style=for-the-badge)
 ![Genre](https://img.shields.io/badge/Genre-Clicker%20%2F%20Incremental-yellow?style=for-the-badge)
