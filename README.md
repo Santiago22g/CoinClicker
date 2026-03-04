@@ -45,4 +45,4 @@ The game is based on managing two main pillars to increase fortune:
 * **Development Sprint:** 4 Days.
 
 ---
-**Developed by Santiago Corcoles and Pablo Delgado de Mendoza**
+**Developed by Santiago Corcoles and Pablo Delgado de Mendoza** :)
