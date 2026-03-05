@@ -1,17 +1,10 @@
 extends Control
 
-@onready var sonido_click = $CoinSound
-@onready var particulas = $CPUParticles2D 
+var coins = 0
+var amount_per_click = 1
 
-func _on_texture_button_pressed():
-	sonido_click.play()
-	
-	# En lugar de usar la posición del ratón, vamos a centrarlas
-	# para ver si aparecen en el centro de la pantalla (ajusta 500, 300 a tu resolución)
-	particulas.global_position = Vector2(500, 300)
-	
-	particulas.restart()
-	particulas.emitting = true
-	
-	# Esto te dirá en la consola si el código se está ejecutando
-	print("Botón pulsado. Partículas activas: ", particulas.emitting)
+signal coins_changed
+
+func _on_texture_button_pressed() -> void:
+	coins += amount_per_click
+	emit_signal("coins_changed", coins)
