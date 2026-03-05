@@ -2,15 +2,62 @@
 
 [ext_resource type="Script" uid="uid://drt31jc7yjk24" path="res://Scripts/main_scene.gd" id="1_52fb6"]
 [ext_resource type="Texture2D" uid="uid://dwdh32w2dutxi" path="res://Assets/Background/nature_2/origbig.png" id="2_6l7je"]
+[ext_resource type="Texture2D" uid="uid://b1mo6feya3oyn" path="res://Assets/Background/sunburst.png" id="3_drdnd"]
+[ext_resource type="Script" uid="uid://blg1k3fl7ng1a" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
 [ext_resource type="Texture2D" uid="uid://cxl8s54sdmx3p" path="res://Assets/CoinsClicker/coin1.png" id="3_x6ack"]
 [ext_resource type="Script" uid="uid://bbyay4j3nu6wx" path="res://Scripts/texture_button.gd" id="4_x6ack"]
 [ext_resource type="FontFile" uid="uid://cj1t38tkjhabc" path="res://Assets/Fonts/Ubuntu/Ubuntu-Bold.ttf" id="5_huasi"]
 [ext_resource type="Texture2D" uid="uid://cdpk1e51vtp0w" path="res://Assets/MoneyCount/coin32.png" id="6_m1efj"]
-[ext_resource type="Script" uid="uid://dwde5ws6tw0ud" path="res://Scenes/coins_stats.gd" id="6_mai8y"]
+[ext_resource type="Script" uid="uid://dwde5ws6tw0ud" path="res://Scripts/coins_stats.gd" id="6_mai8y"]
 [ext_resource type="FontFile" uid="uid://coe4yngtufba0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Light.ttf" id="7_mai8y"]
 [ext_resource type="FontFile" uid="uid://b6beektogovs0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Italic.ttf" id="8_76v2p"]
 [ext_resource type="AudioStream" uid="uid://cmauta5nxahmi" path="res://Assets/Music/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3" id="10_76v2p"]
 [ext_resource type="AudioStream" uid="uid://jraii0w3fn3r" path="res://Assets/Music/Super Mario World Coin (Sound FX) [TuZNZB9EYps].mp3" id="10_mai8y"]
+
+[sub_resource type="Animation" id="Animation_ioaeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7ewk0"]
+resource_name = "spin_background"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhp3t"]
+_data = {
+&"RESET": SubResource("Animation_ioaeq"),
+&"spin_background": SubResource("Animation_7ewk0")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76v2p"]
+bg_color = Color(0.80328393, 0.80959296, 0.7897529, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drdnd"]
 atlas = ExtResource("6_m1efj")
@@ -459,36 +506,85 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_52fb6")
 
+[node name="Indicators" type="Control" parent="." unique_id=1106083292]
+top_level = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Template" type="Label" parent="Indicators" unique_id=335082511]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_huasi")
+theme_override_font_sizes/font_size = 25
+text = "+0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ioaeq")
+
+[node name="DestroyTimer" type="Timer" parent="Indicators/Template" unique_id=1888683196]
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=799579530]
 layout_mode = 0
 offset_right = 1154.0
 offset_bottom = 647.0
 texture = ExtResource("2_6l7je")
 
+[node name="Background" type="TextureRect" parent="." unique_id=2068783219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 51.0
+offset_right = -242.0
+offset_bottom = -33.99994
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(338, 273)
+localize_numeral_system = false
+texture = ExtResource("3_drdnd")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1976410988]
+libraries/ = SubResource("AnimationLibrary_lhp3t")
+autoplay = &"spin_background"
+
 [node name="TextureButton" type="TextureButton" parent="." unique_id=679434938]
-layout_mode = 0
-offset_left = 494.0
-offset_top = 373.0
-offset_right = 653.0
-offset_bottom = 525.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -76.0
+offset_right = 79.5
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(75, 76)
 texture_normal = ExtResource("3_x6ack")
 script = ExtResource("4_x6ack")
 
-[node name="Label" type="Label" parent="." unique_id=74592805]
+[node name="UpgradesLbl" type="Label" parent="." unique_id=74592805]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 353.0
-offset_top = 16.0
+offset_top = 137.0
 offset_right = 510.0
-offset_bottom = 43.0
+offset_bottom = 164.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
 theme_override_fonts/font = ExtResource("5_huasi")
 theme_override_font_sizes/font_size = 23
-text = "0 coins/s"
+theme_override_styles/normal = SubResource("StyleBoxFlat_76v2p")
+text = "UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -503,6 +599,7 @@ offset_right = 209.5
 offset_bottom = 81.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_huasi")
 theme_override_font_sizes/font_size = 40
 text = "0 Coins"
@@ -510,8 +607,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_mai8y")
 
+[node name="CoinLabel2" type="Label" parent="." unique_id=663682192]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 274.0
+offset_top = 4.0
+offset_right = 571.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_huasi")
+theme_override_font_sizes/font_size = 25
+text = "0 per second"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_mai8y")
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2140922403]
-position = Vector2(1105, 29)
+position = Vector2(1110, 30.000004)
 scale = Vector2(0.9375, 0.875)
 sprite_frames = SubResource("SpriteFrames_83t5j")
 frame_progress = 0.4500068
@@ -519,9 +635,9 @@ frame_progress = 0.4500068
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1341721703]
 layout_mode = 0
 offset_left = 850.0
-offset_top = 75.0
+offset_top = 189.0
 offset_right = 1148.0
-offset_bottom = 642.0
+offset_bottom = 611.0
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1811394178]
 layout_mode = 2
@@ -605,6 +721,8 @@ autoplay = true
 stream = ExtResource("10_mai8y")
 max_polyphony = 5
 
+[connection signal="coin_clicked" from="." to="TextureButton" method="_on_main_scene_coin_clicked"]
 [connection signal="coins_changed" from="." to="CoinLabel" method="_on_main_scene_coins_changed"]
+[connection signal="timeout" from="Indicators/Template/DestroyTimer" to="Indicators/Template" method="_on_destroy_timer_timeout"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
