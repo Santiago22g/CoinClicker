@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dwde5ws6tw0ud" path="res://Scenes/coins_stats.gd" id="6_mai8y"]
 [ext_resource type="FontFile" uid="uid://coe4yngtufba0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Light.ttf" id="7_mai8y"]
 [ext_resource type="FontFile" uid="uid://b6beektogovs0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Italic.ttf" id="8_76v2p"]
+[ext_resource type="AudioStream" uid="uid://cmauta5nxahmi" path="res://Assets/Music/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3" id="10_76v2p"]
+[ext_resource type="AudioStream" uid="uid://jraii0w3fn3r" path="res://Assets/Music/Super Mario World Coin (Sound FX) [TuZNZB9EYps].mp3" id="10_mai8y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drdnd"]
 atlas = ExtResource("6_m1efj")
@@ -594,6 +596,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("8_76v2p")
 theme_override_font_sizes/font_size = 20
 text = "Piggy bank"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1721586949]
+stream = ExtResource("10_76v2p")
+autoplay = true
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=2104697902]
+stream = ExtResource("10_mai8y")
+max_polyphony = 5
 
 [connection signal="coins_changed" from="." to="CoinLabel" method="_on_main_scene_coins_changed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
