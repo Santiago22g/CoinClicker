@@ -488,7 +488,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
 theme_override_fonts/font = ExtResource("5_huasi")
 theme_override_font_sizes/font_size = 23
-text = "0 coin/s"
+text = "0 coins/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
