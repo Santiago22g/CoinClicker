@@ -1,6 +1,6 @@
 extends Control
 
-var coins = 1000000000000000
+var coins = 0
 var amount_per_click = 1
 var multiplier = 1
 var is_frenzy_active = false
@@ -14,6 +14,8 @@ var auto_coins_per_sec = 0.0
 @onready var bg_panel = $Panel
 @onready var main_background = $TextureRect
 @onready var upgrade_list = $Panel2/ScrollContainer/VBoxContainer 
+@onready var coins_per_second: Label = $CoinsPerSecond
+@onready var desc_label: Label = $Panel2/DescriptionLabel
 
 signal coins_changed
 signal coin_clicked
@@ -74,9 +76,14 @@ func vincular_botones_escena():
 			
 			btn.set_meta("upgrade_id", data["id"])
 			
-			if btn.pressed.is_connected(_on_upgrade_pressed):
-				btn.pressed.disconnect(_on_upgrade_pressed)
-			btn.pressed.connect(_on_upgrade_pressed.bind(btn))
+			if not btn.pressed.is_connected(_on_upgrade_pressed):
+				btn.pressed.connect(_on_upgrade_pressed.bind(btn))
+			
+			if not btn.mouse_entered.is_connected(_on_mouse_entered_upgrade):
+				btn.mouse_entered.connect(_on_mouse_entered_upgrade.bind(data))
+			
+			if not btn.mouse_exited.is_connected(_on_mouse_exited_upgrade):
+				btn.mouse_exited.connect(_on_mouse_exited_upgrade)
 			
 			actualizar_texto_boton(btn, data)
 
@@ -91,7 +98,7 @@ func buy_upgrade(upgrade_id: String, btn: Button):
 			if coins >= actual_price:
 				coins -= actual_price
 				item["level"] += 1
-				
+				btn.self_modulate = Color(0.5, 1.0, 0.5)
 				if item["type"] == "click":
 					amount_per_click += item["power"]
 				else:
@@ -109,14 +116,27 @@ func actualizar_texto_boton(btn: Button, item: Dictionary):
 
 func _update_ui() -> void:
 	total_label.text = format_val(coins) + " Coins"
+	coins_per_second.text = str(auto_coins_per_sec) + " coins/s"
 	emit_signal("coins_changed", coins)
 
 func format_val(value: float) -> String:
 	if value >= 1.0e15: return str(snapped(value / 1.0e15, 0.1)) + "Q"
 	if value >= 1.0e12: return str(snapped(value / 1.0e12, 0.1)) + "T"
+	if value >= 1.0e9: return str(snapped(value / 1.0e9, 0.1)) + "B"
 	if value >= 1.0e6:  return str(snapped(value / 1.0e6, 0.1)) + "M"
 	if value >= 1.0e3:  return str(snapped(value / 1.0e3, 0.1)) + "K"
 	return str(floor(value))
+
+func _on_mouse_entered_upgrade(data: Dictionary):
+	var tipo = "Click" if data["type"] == "click" else "Passive"
+	var power_text = format_val(data["power"])
+	
+	desc_label.text = "[ %s ]\nEffect: +%s per %s" % [data["name"], power_text, tipo]
+	desc_label.modulate = Color(1, 1, 1, 1)
+
+func _on_mouse_exited_upgrade():
+	desc_label.text = "Hover over an upgrade for details..."
+	desc_label.modulate = Color(1, 1, 1, 0.5)
 
 func _on_setting_button_pressed() -> void:
 	bg_panel.visible = !bg_panel.visible

@@ -1,100 +1,100 @@
 {
   "upgrades": [
-    {
-      "id": "lucky_finger",
-      "name": "Lucky Finger",
-      "base_cost": 10,
-      "power": 1,
-      "type": "click",
-      "level": 0
-    },
-    {
-      "id": "piggy_bank",
-      "name": "Piggy bank",
-      "base_cost": 22,
-      "power": 1,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "atm_machine",
-      "name": "ATM Machine",
-      "base_cost": 1000,
-      "power": 8,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "lulu_pup",
-      "name": "Lulu: The Mining Pup",
-      "base_cost": 5000,
-      "power": 45,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "wilson_ninja",
-      "name": "Wilson the Shadow Ninja",
-      "base_cost": 50000,
-      "power": 260,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "wealthy_wraith",
-      "name": "The Wealthy Wraith",
-      "base_cost": 500000,
-      "power": 1400,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "zack_adventurer",
-      "name": "Zack The Adventurer",
-      "base_cost": 50000000,
-      "power": 78000,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "emerald_slime",
-      "name": "Emerald Coin Slime",
-      "base_cost": 500000000,
-      "power": 420000,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "blue_lazugu",
-      "name": "Blue Lazugu",
-      "base_cost": 1000000000000,
-      "power": 12000000,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "pink_lazugu",
-      "name": "Pink Lazugu",
-      "base_cost": 5000000000000,
-      "power": 70000000,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "alien_plane",
-      "name": "Alien Destructor Plane",
-      "base_cost": 100000000000000,
-      "power": 950000000,
-      "type": "passive",
-      "level": 0
-    },
-    {
-      "id": "coin_drifter",
-      "name": "Luxury Coin-Drifter",
-      "base_cost": 1000000000000000,
-      "power": 15000000000,
-      "type": "passive",
-      "level": 0
-    }
+	{
+	  "id": "lucky_finger",
+	  "name": "Lucky Finger",
+	  "base_cost": 10,
+	  "power": 1,
+	  "type": "click",
+	  "level": 0
+	},
+	{
+	  "id": "piggy_bank",
+	  "name": "Piggy bank",
+	  "base_cost": 25,
+	  "power": 1,
+	  "type": "passive",
+	  "level": 0
+	},
+	{
+	  "id": "golden_glove",
+	  "name": "Golden Glove",
+	  "base_cost": 500,
+	  "power": 5,
+	  "type": "click",
+	  "level": 0
+	},
+	{
+	  "id": "atm_machine",
+	  "name": "ATM Machine",
+	  "base_cost": 1000,
+	  "power": 8,
+	  "type": "passive",
+	  "level": 0
+	},
+	{
+	  "id": "lulu_pup",
+	  "name": "Lulu: The Mining Pup",
+	  "base_cost": 5000,
+	  "power": 45,
+	  "type": "passive",
+	  "level": 0
+	},
+	{
+	  "id": "shadow_curse",
+	  "name": "Shadow's Curse",
+	  "base_cost": 25000,
+	  "power": 110,
+	  "type": "click",
+	  "level": 0
+	},
+	{
+	  "id": "wilson_ninja",
+	  "name": "Wilson the Shadow Ninja",
+	  "base_cost": 50000,
+	  "power": 260,
+	  "type": "passive",
+	  "level": 0
+	},
+	{
+	  "id": "wraith_touch",
+	  "name": "Wraith's Touch",
+	  "base_cost": 250000,
+	  "power": 650,
+	  "type": "click",
+	  "level": 0
+	},
+	{
+	  "id": "wealthy_wraith",
+	  "name": "The Wealthy Wraith",
+	  "base_cost": 500000,
+	  "power": 1400,
+	  "type": "passive",
+	  "level": 0
+	},
+	{
+	  "id": "zack_adventurer",
+	  "name": "Zack The Adventurer",
+	  "base_cost": 50000000,
+	  "power": 78000,
+	  "type": "passive",
+	  "level": 0
+	},
+	{
+	  "id": "alien_laser",
+	  "name": "Alien Destructor Laser",
+	  "base_cost": 100000000000,
+	  "power": 1500000,
+	  "type": "click",
+	  "level": 0
+	},
+	{
+	  "id": "coin_drifter",
+	  "name": "Luxury Coin-Drifter",
+	  "base_cost": 1000000000000,
+	  "power": 15000000000,
+	  "type": "click",
+	  "level": 0
+	}
   ]
 }

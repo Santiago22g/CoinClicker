@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://drt31jc7yjk24" path="res://Scripts/main_scene.gd" id="1_52fb6"]
 [ext_resource type="Texture2D" uid="uid://dwdh32w2dutxi" path="res://Assets/Background/nature_2/origbig.png" id="2_6l7je"]
 [ext_resource type="Texture2D" uid="uid://b1mo6feya3oyn" path="res://Assets/Background/sunburst.png" id="3_drdnd"]
-[ext_resource type="Script" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
+[ext_resource type="Script" uid="uid://blg1k3fl7ng1a" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
 [ext_resource type="Texture2D" uid="uid://cxl8s54sdmx3p" path="res://Assets/CoinsClicker/coin1.png" id="3_x6ack"]
 [ext_resource type="Script" uid="uid://bbyay4j3nu6wx" path="res://Scripts/texture_button.gd" id="4_x6ack"]
 [ext_resource type="FontFile" uid="uid://cj1t38tkjhabc" path="res://Assets/Fonts/Ubuntu/Ubuntu-Bold.ttf" id="5_huasi"]
@@ -592,6 +592,16 @@ text = "UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1988660738]
+layout_mode = 0
+offset_left = 231.0
+offset_top = -51.0
+offset_right = 897.0
+offset_bottom = 324.0
+step = 0.001
+texture_under = ExtResource("14_lhp3t")
+texture_progress = ExtResource("15_gnsmo")
+
 [node name="CoinTotal" type="Label" parent="." unique_id=511307944]
 layout_mode = 1
 anchors_preset = 5
@@ -610,21 +620,21 @@ text = "0 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CoinPerSecond" type="Label" parent="." unique_id=663682192]
+[node name="CoinsPerSecond" type="Label" parent="." unique_id=663682192]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 274.0
-offset_top = 4.0
-offset_right = 571.0
-offset_bottom = 54.0
+offset_left = 319.0
+offset_top = 5.0
+offset_right = 576.0
+offset_bottom = 55.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_huasi")
 theme_override_font_sizes/font_size = 25
-text = "0 per second"
+text = "0 coins/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -641,12 +651,18 @@ offset_top = 191.0
 offset_right = 1152.0
 offset_bottom = 601.0
 
+[node name="DescriptionLabel" type="Label" parent="Panel2" unique_id=1244645172]
+layout_mode = 0
+offset_left = 26.0
+offset_right = 103.0
+offset_bottom = 30.0
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel2" unique_id=2048264166]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 340.0
-offset_bottom = 409.0
+offset_left = 2.0
+offset_top = 61.0
+offset_right = 341.0
+offset_bottom = 408.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/ScrollContainer" unique_id=1136257458]
 layout_mode = 2
@@ -697,16 +713,6 @@ autoplay = true
 stream = ExtResource("10_mai8y")
 volume_db = -20.0
 max_polyphony = 5
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1988660738]
-layout_mode = 0
-offset_left = 231.0
-offset_top = -51.0
-offset_right = 897.0
-offset_bottom = 324.0
-step = 0.001
-texture_under = ExtResource("14_lhp3t")
-texture_progress = ExtResource("15_gnsmo")
 
 [node name="SettingButton" type="TextureButton" parent="." unique_id=104130037]
 layout_mode = 1
@@ -789,8 +795,6 @@ autostart = true
 [connection signal="timeout" from="Indicators/Template/DestroyTimer" to="Indicators/Template" method="_on_destroy_timer_timeout"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
-[connection signal="pressed" from="Panel2/ScrollContainer/VBoxContainer/Button_Upgrade1" to="." method="_on_button_upgrade_1_pressed" binds= ["better_clicks"]]
-[connection signal="pressed" from="Panel2/ScrollContainer/VBoxContainer/Button_Upgrade2" to="." method="_on_button_upgrade_2_pressed" binds= ["auto_farm"]]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BG1" to="." method="_on_bg_1_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BG2" to="." method="_on_bg_2_pressed"]
