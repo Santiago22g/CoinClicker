@@ -8,8 +8,6 @@
 [ext_resource type="Script" uid="uid://bbyay4j3nu6wx" path="res://Scripts/texture_button.gd" id="4_x6ack"]
 [ext_resource type="FontFile" uid="uid://cj1t38tkjhabc" path="res://Assets/Fonts/Ubuntu/Ubuntu-Bold.ttf" id="5_huasi"]
 [ext_resource type="Texture2D" uid="uid://cdpk1e51vtp0w" path="res://Assets/MoneyCount/coin32.png" id="6_m1efj"]
-[ext_resource type="FontFile" uid="uid://coe4yngtufba0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Light.ttf" id="7_mai8y"]
-[ext_resource type="FontFile" uid="uid://b6beektogovs0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Italic.ttf" id="8_76v2p"]
 [ext_resource type="AudioStream" uid="uid://cmauta5nxahmi" path="res://Assets/Music/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3" id="10_76v2p"]
 [ext_resource type="AudioStream" uid="uid://jraii0w3fn3r" path="res://Assets/Music/Super Mario World Coin (Sound FX) [TuZNZB9EYps].mp3" id="10_mai8y"]
 [ext_resource type="Texture2D" uid="uid://b4jp61pxm7vhn" path="res://Assets/CoinMeter.png" id="14_lhp3t"]
@@ -500,9 +498,6 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2mrd"]
-bg_color = Color(0.9513101, 0.9357488, 0.5532942, 0.7411765)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oxhp"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5882353)
 
@@ -584,10 +579,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 320.0
-offset_top = 146.0
-offset_right = 477.0
-offset_bottom = 173.0
+offset_left = 344.0
+offset_top = 137.0
+offset_right = 501.0
+offset_bottom = 166.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
 theme_override_fonts/font = ExtResource("5_huasi")
@@ -639,82 +634,33 @@ scale = Vector2(0.9375, 0.875)
 sprite_frames = SubResource("SpriteFrames_83t5j")
 frame_progress = 0.4500068
 
-[node name="Buttons" type="VBoxContainer" parent="." unique_id=1341721703]
+[node name="Panel2" type="Panel" parent="." unique_id=1418056358]
 layout_mode = 0
-offset_left = 799.0
-offset_top = 187.0
-offset_right = 1149.0
-offset_bottom = 609.0
+offset_left = 875.0
+offset_top = 191.0
+offset_right = 1144.0
+offset_bottom = 601.0
 
-[node name="Button" type="Button" parent="Buttons" unique_id=1811394178]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.17686042, 0.15090233, 0, 1)
-theme_override_fonts/font = ExtResource("7_mai8y")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_f2mrd")
-text = "22 cc | Piggy bank | lvl 1"
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2" unique_id=2048264166]
+layout_mode = 0
+offset_right = 270.0
+offset_bottom = 409.0
 
-[node name="Button2" type="Button" parent="Buttons" unique_id=1106870904]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/ScrollContainer" unique_id=1136257458]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "1K cc | ATM Machine | lvl 0 "
+alignment = 1
 
-[node name="Button3" type="Button" parent="Buttons" unique_id=1515383997]
+[node name="Button_Upgrade1" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=258085809]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = " 5K cc | Lulu: The Mining Pup | lvl 0"
-expand_icon = true
+text = "Comprar Dedo de Hierro"
 
-[node name="Button4" type="Button" parent="Buttons" unique_id=1428979641]
+[node name="Button_Upgrade2" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=112133489]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "50K cc | Wilson the Shadow Ninja | lvl 0"
+text = "Comprar Robot"
 
-[node name="Button5" type="Button" parent="Buttons" unique_id=620689740]
+[node name="Button_Upgrade3" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=193477407]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "500K cc | The Wealthy Wraith | lvl 0
-"
-
-[node name="Button6" type="Button" parent="Buttons" unique_id=273344698]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "50M | Zack The Adventurer | lvl 0"
-
-[node name="Button7" type="Button" parent="Buttons" unique_id=1541263850]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "500M | Emerald Coin Slime | lvl 0"
-
-[node name="Button8" type="Button" parent="Buttons" unique_id=2020149658]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "1T | Blue Lazugu | lvl 0"
-
-[node name="Button9" type="Button" parent="Buttons" unique_id=17102914]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "5T | Pink Lazugu | lvl 0"
-
-[node name="Button10" type="Button" parent="Buttons" unique_id=794744685]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "100T | Alien Destructor Plane | lvl 0"
-
-[node name="Button11" type="Button" parent="Buttons" unique_id=1303103206]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76v2p")
-theme_override_font_sizes/font_size = 20
-text = "1Q | Luxury Coin-Drifter | lvl 0"
+text = "Comprar Robot"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1721586949]
 stream = ExtResource("10_76v2p")
@@ -809,13 +755,19 @@ texture_normal = ExtResource("20_b48ew")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Timer" type="Timer" parent="." unique_id=721989861]
+autostart = true
+
 [connection signal="coin_clicked" from="." to="TextureButton" method="_on_main_scene_coin_clicked"]
 [connection signal="coins_changed" from="." to="CoinTotal" method="_on_main_scene_coins_changed"]
 [connection signal="timeout" from="Indicators/Template/DestroyTimer" to="Indicators/Template" method="_on_destroy_timer_timeout"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="Panel2/ScrollContainer/VBoxContainer/Button_Upgrade1" to="." method="_on_button_upgrade_1_pressed" binds= ["better_clicks"]]
+[connection signal="pressed" from="Panel2/ScrollContainer/VBoxContainer/Button_Upgrade2" to="." method="_on_button_upgrade_2_pressed" binds= ["auto_farm"]]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BG1" to="." method="_on_bg_1_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BG2" to="." method="_on_bg_2_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BG3" to="." method="_on_bg_3_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BG4" to="." method="_on_bg_4_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,20 @@
+{
+  "upgrades": [
+	{
+	  "id": "better_clicks",
+	  "name": "Dedo de Acero",
+	  "base_cost": 30,
+	  "power": 1,
+	  "type": "click",
+	  "level": 0
+	},
+	{
+	  "id": "auto_farm",
+	  "name": "Granja Automática",
+	  "base_cost": 100,
+	  "power": 5,
+	  "type": "passive",
+	  "level": 0
+	}
+  ]
+}
