@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://drt31jc7yjk24" path="res://Scripts/main_scene.gd" id="1_52fb6"]
 [ext_resource type="Texture2D" uid="uid://dwdh32w2dutxi" path="res://Assets/Background/nature_2/origbig.png" id="2_6l7je"]
 [ext_resource type="Texture2D" uid="uid://b1mo6feya3oyn" path="res://Assets/Background/sunburst.png" id="3_drdnd"]
-[ext_resource type="Script" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
+[ext_resource type="Script" uid="uid://blg1k3fl7ng1a" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
 [ext_resource type="Texture2D" uid="uid://cxl8s54sdmx3p" path="res://Assets/CoinsClicker/coin1.png" id="3_x6ack"]
 [ext_resource type="Script" uid="uid://bbyay4j3nu6wx" path="res://Scripts/texture_button.gd" id="4_x6ack"]
 [ext_resource type="FontFile" uid="uid://cj1t38tkjhabc" path="res://Assets/Fonts/Ubuntu/Ubuntu-Bold.ttf" id="5_huasi"]
 [ext_resource type="Texture2D" uid="uid://cdpk1e51vtp0w" path="res://Assets/MoneyCount/coin32.png" id="6_m1efj"]
-[ext_resource type="Script" path="res://Scenes/coins_stats.gd" id="6_mai8y"]
 [ext_resource type="FontFile" uid="uid://coe4yngtufba0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Light.ttf" id="7_mai8y"]
 [ext_resource type="FontFile" uid="uid://b6beektogovs0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Italic.ttf" id="8_76v2p"]
 [ext_resource type="AudioStream" uid="uid://cmauta5nxahmi" path="res://Assets/Music/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3" id="10_76v2p"]
@@ -548,10 +547,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 222.0
-offset_top = 51.0
-offset_right = -260.0
-offset_bottom = -33.99994
+offset_left = 219.0
+offset_top = 135.0
+offset_right = -263.0
+offset_bottom = 50.00006
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(338, 273)
@@ -570,10 +569,10 @@ anchor_left = 0.41500002
 anchor_top = 0.38300002
 anchor_right = 0.55300003
 anchor_bottom = 0.61700004
-offset_left = 0.4199829
-offset_top = -0.18400574
-offset_right = 0.44396973
-offset_bottom = 0.18395996
+offset_left = -0.08001709
+offset_top = 90.815994
+offset_right = -0.056030273
+offset_bottom = 91.18396
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(75, 76)
@@ -615,7 +614,6 @@ theme_override_font_sizes/font_size = 40
 text = "0 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("6_mai8y")
 
 [node name="CoinPerSecond" type="Label" parent="." unique_id=663682192]
 layout_mode = 1
@@ -634,7 +632,6 @@ theme_override_font_sizes/font_size = 25
 text = "0 per second"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("6_mai8y")
 
 [node name="TotalCoinAnimation" type="AnimatedSprite2D" parent="." unique_id=2140922403]
 position = Vector2(1110, 30.000004)
@@ -775,7 +772,6 @@ theme_override_font_sizes/font_size = 25
 text = "Change Background"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("6_mai8y")
 
 [node name="HBoxContainer" type="GridContainer" parent="Panel" unique_id=1474964517]
 layout_mode = 0
