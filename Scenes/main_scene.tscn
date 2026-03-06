@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://yflguce5lb37" path="res://Assets/CoinMeterFull.png" id="15_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://dqlchcqiysonx" path="res://Assets/IconBackgroundButton.png" id="16_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://f6utihi451gm" path="res://Assets/IconBackgroundButtonGolden.png" id="17_psl12"]
+[ext_resource type="FontFile" uid="uid://coe4yngtufba0" path="res://Assets/Fonts/Ubuntu/Ubuntu-Light.ttf" id="18_2ebs2"]
 [ext_resource type="Texture2D" uid="uid://5rbvjynghbu6" path="res://Assets/Background/nature_6/orig.png" id="18_jvnna"]
 [ext_resource type="Texture2D" uid="uid://bgjx12nhxxjq1" path="res://Assets/Background/nature_8/orig.png" id="19_jvnna"]
 [ext_resource type="Texture2D" uid="uid://ceym6amhqjod1" path="res://Assets/Background/nature_4/orig.png" id="20_b48ew"]
@@ -592,6 +593,24 @@ text = "UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UpgradesLbl2" type="Label" parent="." unique_id=465106354]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -503.0
+offset_top = 322.0
+offset_right = -346.0
+offset_bottom = 351.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
+theme_override_fonts/font = ExtResource("5_huasi")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_76v2p")
+text = "ACHIEVEMENTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1988660738]
 layout_mode = 0
 offset_left = 231.0
@@ -789,6 +808,56 @@ stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="." unique_id=721989861]
 autostart = true
+
+[node name="Panel3" type="Panel" parent="." unique_id=524165131]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 364.0
+offset_right = 307.0
+offset_bottom = 629.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel3" unique_id=194932125]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 268.0
+offset_bottom = 257.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel3/ScrollContainer" unique_id=572281924]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel3/ScrollContainer/VBoxContainer" unique_id=932493897]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_2ebs2")
+text = "First step: 
+Buy your first upgrade"
+
+[node name="Label2" type="Label" parent="Panel3/ScrollContainer/VBoxContainer" unique_id=1095625335]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_2ebs2")
+text = "Young entrepreneur: 
+Buy your first passive income"
+
+[node name="Label3" type="Label" parent="Panel3/ScrollContainer/VBoxContainer" unique_id=105985644]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_2ebs2")
+text = "First step: buy your first upgrade"
+
+[node name="Label4" type="Label" parent="Panel3/ScrollContainer/VBoxContainer" unique_id=803857366]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_2ebs2")
+text = "First step: buy your first upgrade"
+
+[node name="Label5" type="Label" parent="Panel3/ScrollContainer/VBoxContainer" unique_id=1546749920]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_2ebs2")
+text = "First step: buy your first upgrade"
+
+[node name="Label6" type="Label" parent="Panel3/ScrollContainer/VBoxContainer" unique_id=280843899]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_2ebs2")
+text = "First step: buy your first upgrade"
 
 [connection signal="coin_clicked" from="." to="TextureButton" method="_on_main_scene_coin_clicked"]
 [connection signal="coins_changed" from="." to="CoinTotal" method="_on_main_scene_coins_changed"]
