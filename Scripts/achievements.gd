@@ -3,6 +3,7 @@ extends Panel
 @export var achievement_scene: PackedScene 
 @export var popup_panel: Panel
 @export var popup_label: Label
+@onready var achievement_sound: AudioStreamPlayer2D = $AchievementSound
 
 @onready var container = $ScrollContainer/VBoxContainer
 var achievements_list = []
@@ -36,22 +37,13 @@ func render_achievements():
 
 func check_unlock(upgrade_id: String, current_level: int):
 	var found_new_unlock = false
-	var last_title = ""
 	
 	for ach in achievements_list:
 		if not ach["unlocked"] and ach["requirement"]["upgrade_id"] == upgrade_id:
 			if current_level >= ach["requirement"]["value"]:
 				ach["unlocked"] = true
 				found_new_unlock = true
-				last_title = ach["title"]
 	
 	if found_new_unlock:
 		render_achievements()
-		show_notification(last_title)
-
-func show_notification(title: String):
-	if popup_panel and popup_label:
-		popup_label.text = "Achievement Unlocked: " + title
-		popup_panel.visible = true
-		await get_tree().create_timer(3.0).timeout
-		popup_panel.visible = false
+		achievement_sound.play()
