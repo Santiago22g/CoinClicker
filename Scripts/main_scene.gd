@@ -16,6 +16,7 @@ var auto_coins_per_sec = 0.0
 @onready var upgrade_list = $Panel2/ScrollContainer/VBoxContainer 
 @onready var coins_per_second: Label = $CoinsPerSecond
 @onready var desc_label: Label = $Panel2/DescriptionLabel
+@onready var achievement_manager = $Panel3
 
 signal coins_changed
 signal coin_clicked
@@ -98,6 +99,10 @@ func buy_upgrade(upgrade_id: String, btn: Button):
 			if coins >= actual_price:
 				coins -= actual_price
 				item["level"] += 1
+				
+				if achievement_manager:
+					achievement_manager.check_unlock(upgrade_id, item["level"])
+				
 				btn.self_modulate = Color(0.5, 1.0, 0.5)
 				if item["type"] == "click":
 					amount_per_click += item["power"]

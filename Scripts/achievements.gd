@@ -6,7 +6,6 @@ extends Panel
 
 @onready var container = $ScrollContainer/VBoxContainer
 var achievements_list = []
-const SAVE_PATH = "user://achievements_save.json"
 
 func _ready():
 	load_data()
@@ -16,9 +15,6 @@ func _ready():
 
 func load_data():
 	var file_path = "res://achievements.json"
-	if FileAccess.file_exists(SAVE_PATH):
-		file_path = SAVE_PATH
-	
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	achievements_list = content["achievements"]
@@ -51,7 +47,6 @@ func check_unlock(upgrade_id: String, current_level: int):
 	
 	if found_new_unlock:
 		render_achievements()
-		save_progress()
 		show_notification(last_title)
 
 func show_notification(title: String):
@@ -60,8 +55,3 @@ func show_notification(title: String):
 		popup_panel.visible = true
 		await get_tree().create_timer(3.0).timeout
 		popup_panel.visible = false
-
-func save_progress():
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	var data_to_save = {"achievements": achievements_list}
-	file.store_string(JSON.stringify(data_to_save))
