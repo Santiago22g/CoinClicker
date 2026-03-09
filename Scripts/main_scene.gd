@@ -1,14 +1,15 @@
 extends Control
 
-var coins = 0
-var amount_per_click = 1
-var multiplier = 1
-var is_frenzy_active = false
-var drain_speed = 15.0 
-var upgrades_data = []
-var auto_coins_per_sec = 0.0
+var coins: float = 0.0
+var amount_per_click: float = 1.0
+var multiplier: int = 1
+var is_frenzy_active: bool = false
+var drain_speed: float = 15.0 
+var upgrades_data: Array = []
+var auto_coins_per_sec: float = 0.0
 
 @onready var click_sound = $CoinSound
+@onready var buy_sound = $BuyUpgrade
 @onready var coin_meter = $TextureProgressBar 
 @onready var total_label = $CoinTotal 
 @onready var bg_panel = $Panel
@@ -110,12 +111,18 @@ func buy_upgrade(upgrade_id: String, btn: Button):
 			var actual_price = item["base_cost"] * pow(1.15, item["level"])
 			if coins >= actual_price:
 				coins -= actual_price
+				
+				if buy_sound:
+					buy_sound.play()
+					
 				item["level"] += 1
 				
 				if achievement_manager:
 					achievement_manager.check_unlock(upgrade_id, item["level"])
+				
 				btn.self_modulate = Color(0.5, 1.0, 0.5)
 				_play_buy_effects(btn)
+				
 				if item["type"] == "click":
 					amount_per_click += item["power"]
 				else:
@@ -133,15 +140,15 @@ func update_button_text(btn: Button, item: Dictionary):
 
 func _update_ui() -> void:
 	total_label.text = format_val(coins) + " Coins"
-	coins_per_second.text = str(auto_coins_per_sec) + " coins/s"
+	coins_per_second.text = format_val(auto_coins_per_sec) + " coins/s"
 	emit_signal("coins_changed", coins)
 
 func format_val(value: float) -> String:
 	if value >= 1.0e15: return str(snapped(value / 1.0e15, 0.1)) + "Q"
 	if value >= 1.0e12: return str(snapped(value / 1.0e12, 0.1)) + "T"
 	if value >= 1.0e9: return str(snapped(value / 1.0e9, 0.1)) + "B"
-	if value >= 1.0e6:  return str(snapped(value / 1.0e6, 0.1)) + "M"
-	if value >= 1.0e3:  return str(snapped(value / 1.0e3, 0.1)) + "K"
+	if value >= 1.0e6: return str(snapped(value / 1.0e6, 0.1)) + "M"
+	if value >= 1.0e3: return str(snapped(value / 1.0e3, 0.1)) + "K"
 	return str(floor(value))
 
 func _on_mouse_entered_upgrade(data: Dictionary):
