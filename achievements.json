@@ -1,0 +1,70 @@
+{
+  "achievements": [
+	{
+	  "id": "first_click_upgrade",
+	  "title": "Dedo con Suerte",
+	  "description": "Compra tu primer Lucky Finger",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "lucky_finger",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "saving_money",
+	  "title": "Ahorrador Novato",
+	  "description": "Consigue una Piggy Bank",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "piggy_bank",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "pet_lover",
+	  "title": "El mejor amigo del minero",
+	  "description": "Adopta a Lulu: The Mining Pup",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "lulu_pup",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "ninja_master",
+	  "title": "Maestro de las Sombras",
+	  "description": "Lleva a Wilson el Ninja al nivel 10",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "wilson_ninja",
+		"value": 10
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "alien_tech",
+	  "title": "Tecnología de otro mundo",
+	  "description": "Desbloquea el Alien Destructor Laser",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "alien_laser",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "billionaire_drifter",
+	  "title": "Derrape de Oro",
+	  "description": "Consigue el Luxury Coin-Drifter",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "coin_drifter",
+		"value": 1
+	  },
+	  "unlocked": false
+	}
+  ]
+}
