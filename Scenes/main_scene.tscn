@@ -504,7 +504,7 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvnna"]
-bg_color = Color(0.1350835, 0.36377096, 0.66644686, 1)
+bg_color = Color(0.65441495, 0.5548366, 0.24810767, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -515,7 +515,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8edxt"]
-bg_color = Color(0.4756353, 0.834034, 0.96841556, 1)
+bg_color = Color(0.8235076, 0.7785263, 0.63631135, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -526,7 +526,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b48ew"]
-bg_color = Color(0.26408187, 0.5843097, 0.8464567, 1)
+bg_color = Color(0.58745635, 0.4760108, 0.14793783, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
