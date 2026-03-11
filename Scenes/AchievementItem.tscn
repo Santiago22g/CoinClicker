@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cefmqgr0u24yi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maj3o"]
+bg_color = Color(0.17254902, 0.17254902, 0.17254902, 0.6117647)
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1115530789]
+custom_minimum_size = Vector2(0, 60)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_maj3o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=939576722]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=23981531]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Achievemente Name"
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=2139342665]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5705783, 0.57057834, 0.57057834, 1)
+text = "Description"

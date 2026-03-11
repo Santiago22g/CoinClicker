@@ -3,20 +3,26 @@
 [ext_resource type="Script" uid="uid://drt31jc7yjk24" path="res://Scripts/main_scene.gd" id="1_52fb6"]
 [ext_resource type="Texture2D" uid="uid://dwdh32w2dutxi" path="res://Assets/Background/nature_2/origbig.png" id="2_6l7je"]
 [ext_resource type="Texture2D" uid="uid://b1mo6feya3oyn" path="res://Assets/Background/sunburst.png" id="3_drdnd"]
-[ext_resource type="Script" uid="uid://blg1k3fl7ng1a" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
+[ext_resource type="Script" path="res://Scripts/destroy_template.gd" id="3_ioaeq"]
 [ext_resource type="Texture2D" uid="uid://cxl8s54sdmx3p" path="res://Assets/CoinsClicker/coin1.png" id="3_x6ack"]
 [ext_resource type="Script" uid="uid://bbyay4j3nu6wx" path="res://Scripts/texture_button.gd" id="4_x6ack"]
 [ext_resource type="FontFile" uid="uid://cj1t38tkjhabc" path="res://Assets/Fonts/Ubuntu/Ubuntu-Bold.ttf" id="5_huasi"]
 [ext_resource type="Texture2D" uid="uid://cdpk1e51vtp0w" path="res://Assets/MoneyCount/coin32.png" id="6_m1efj"]
 [ext_resource type="AudioStream" uid="uid://cmauta5nxahmi" path="res://Assets/Music/massobeats - chilly (royalty free lofi music) [UbwxYGj5phk].mp3" id="10_76v2p"]
 [ext_resource type="AudioStream" uid="uid://jraii0w3fn3r" path="res://Assets/Music/Super Mario World Coin (Sound FX) [TuZNZB9EYps].mp3" id="10_mai8y"]
+[ext_resource type="FontFile" uid="uid://dpdrfwowvnct1" path="res://Assets/Fonts/Ubuntu/Ubuntu-Medium.ttf" id="11_jvnna"]
 [ext_resource type="Texture2D" uid="uid://b4jp61pxm7vhn" path="res://Assets/CoinMeter.png" id="14_lhp3t"]
 [ext_resource type="Texture2D" uid="uid://yflguce5lb37" path="res://Assets/CoinMeterFull.png" id="15_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://dqlchcqiysonx" path="res://Assets/IconBackgroundButton.png" id="16_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://f6utihi451gm" path="res://Assets/IconBackgroundButtonGolden.png" id="17_psl12"]
+[ext_resource type="Script" uid="uid://cgoixfdbtrwyi" path="res://Scripts/achievements.gd" id="18_2ebs2"]
 [ext_resource type="Texture2D" uid="uid://5rbvjynghbu6" path="res://Assets/Background/nature_6/orig.png" id="18_jvnna"]
 [ext_resource type="Texture2D" uid="uid://bgjx12nhxxjq1" path="res://Assets/Background/nature_8/orig.png" id="19_jvnna"]
+[ext_resource type="PackedScene" uid="uid://cefmqgr0u24yi" path="res://Scenes/AchievementItem.tscn" id="19_oyb3p"]
 [ext_resource type="Texture2D" uid="uid://ceym6amhqjod1" path="res://Assets/Background/nature_4/orig.png" id="20_b48ew"]
+[ext_resource type="AudioStream" uid="uid://bq4kd6np87hlj" path="res://Assets/Music/achievement.wav" id="21_b48ew"]
+[ext_resource type="AudioStream" uid="uid://br85pf2qm7ei8" path="res://Assets/Music/Pixelated_Riches.mp3" id="22_8edxt"]
+[ext_resource type="AudioStream" uid="uid://daada0cdk8xt5" path="res://Assets/Music/Cha-Ching Sound Effect [OaoXw8W1dkQ].mp3" id="23_5oxhp"]
 
 [sub_resource type="Animation" id="Animation_ioaeq"]
 length = 0.001
@@ -498,6 +504,39 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvnna"]
+bg_color = Color(0.65441495, 0.5548366, 0.24810767, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8edxt"]
+bg_color = Color(0.8235076, 0.7785263, 0.63631135, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b48ew"]
+bg_color = Color(0.58745635, 0.4760108, 0.14793783, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oxhp"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5882353)
 
@@ -579,9 +618,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 339.0
+offset_left = 327.0
 offset_top = 143.0
-offset_right = 496.0
+offset_right = 484.0
 offset_bottom = 172.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
@@ -589,6 +628,24 @@ theme_override_fonts/font = ExtResource("5_huasi")
 theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_76v2p")
 text = "UPGRADES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradesLbl2" type="Label" parent="." unique_id=465106354]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -514.0
+offset_top = 322.0
+offset_right = -311.0
+offset_bottom = 351.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.40695655, 0.24561891, 0.12855858, 1)
+theme_override_fonts/font = ExtResource("5_huasi")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_76v2p")
+text = "ACHIEVEMENTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -649,7 +706,7 @@ layout_mode = 0
 offset_left = 812.0
 offset_top = 191.0
 offset_right = 1152.0
-offset_bottom = 601.0
+offset_bottom = 583.0
 
 [node name="DescriptionLabel" type="Label" parent="Panel2" unique_id=1244645172]
 layout_mode = 0
@@ -659,10 +716,10 @@ offset_bottom = 30.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel2" unique_id=2048264166]
 layout_mode = 0
-offset_left = 2.0
+offset_left = 19.0
 offset_top = 61.0
 offset_right = 341.0
-offset_bottom = 408.0
+offset_bottom = 383.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/ScrollContainer" unique_id=1136257458]
 layout_mode = 2
@@ -670,39 +727,87 @@ alignment = 1
 
 [node name="Button_Upgrade1" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=258085809]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade2" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=112133489]
+[node name="Button_Upgrade2" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1091214907]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade3" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=193477407]
+[node name="Button_Upgrade3" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=214075476]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade4" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1244345672]
+[node name="Button_Upgrade4" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1999540390]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade5" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1599931948]
+[node name="Button_Upgrade5" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=933652746]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade6" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=389607838]
+[node name="Button_Upgrade6" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=2107822063]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade7" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=193501172]
+[node name="Button_Upgrade7" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=2049067203]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade8" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=180715833]
+[node name="Button_Upgrade8" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=2069252702]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade9" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1534160087]
+[node name="Button_Upgrade9" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=925409954]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade10" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=223158463]
+[node name="Button_Upgrade10" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=375103710]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade11" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1989053424]
+[node name="Button_Upgrade11" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1171882504]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
-[node name="Button_Upgrade12" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=104818569]
+[node name="Button_Upgrade12" type="Button" parent="Panel2/ScrollContainer/VBoxContainer" unique_id=1901983497]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8edxt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b48ew")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1721586949]
 stream = ExtResource("10_76v2p")
@@ -789,6 +894,36 @@ stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="." unique_id=721989861]
 autostart = true
+
+[node name="Panel3" type="Panel" parent="." unique_id=524165131]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 364.0
+offset_right = 307.0
+offset_bottom = 629.0
+script = ExtResource("18_2ebs2")
+achievement_scene = ExtResource("19_oyb3p")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel3" unique_id=194932125]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 268.0
+offset_bottom = 257.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel3/ScrollContainer" unique_id=572281924]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="AchievementSound" type="AudioStreamPlayer2D" parent="Panel3" unique_id=907678707]
+stream = ExtResource("21_b48ew")
+
+[node name="FrenzySound" type="AudioStreamPlayer2D" parent="." unique_id=930418549]
+stream = ExtResource("22_8edxt")
+
+[node name="BuyUpgrade" type="AudioStreamPlayer2D" parent="." unique_id=1821913166]
+stream = ExtResource("23_5oxhp")
+volume_db = -10.0
 
 [connection signal="coin_clicked" from="." to="TextureButton" method="_on_main_scene_coin_clicked"]
 [connection signal="coins_changed" from="." to="CoinTotal" method="_on_main_scene_coins_changed"]

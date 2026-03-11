@@ -1,0 +1,70 @@
+{
+  "achievements": [
+	{
+	  "id": "first_click_upgrade",
+	  "title": "Lucky Finger",
+	  "description": "Buy your first Lucky Finger",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "lucky_finger",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "saving_money",
+	  "title": "Novice Saver",
+	  "description": "Buy one Piggy Bank",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "piggy_bank",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "pet_lover",
+	  "title": "The miner's best friend",
+	  "description": "Buy one Lulu: The Mining Pup",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "lulu_pup",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "ninja_master",
+	  "title": "Shadow Master",
+	  "description": "Get Wilson the Ninja to level 10",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "wilson_ninja",
+		"value": 10
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "alien_tech",
+	  "title": "Technology from another world",
+	  "description": "Unlock the Alien Destructor Laser",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "alien_laser",
+		"value": 1
+	  },
+	  "unlocked": false
+	},
+	{
+	  "id": "billionaire_drifter",
+	  "title": "Golden Skid",
+	  "description": "Get the Luxury Coin-Drifter",
+	  "requirement": {
+		"type": "upgrade_level",
+		"upgrade_id": "coin_drifter",
+		"value": 1
+	  },
+	  "unlocked": false
+	}
+  ]
+}

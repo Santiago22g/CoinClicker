@@ -1,14 +1,15 @@
 extends Control
 
-var coins = 0
-var amount_per_click = 1
-var multiplier = 1
-var is_frenzy_active = false
-var drain_speed = 15.0 
-var upgrades_data = []
-var auto_coins_per_sec = 0.0
+var coins: float = 0.0
+var amount_per_click: float = 1.0
+var multiplier: int = 1
+var is_frenzy_active: bool = false
+var drain_speed: float = 15.0 
+var upgrades_data: Array = []
+var auto_coins_per_sec: float = 0.0
 
 @onready var click_sound = $CoinSound
+@onready var buy_sound = $BuyUpgrade
 @onready var coin_meter = $TextureProgressBar 
 @onready var total_label = $CoinTotal 
 @onready var bg_panel = $Panel
@@ -16,6 +17,8 @@ var auto_coins_per_sec = 0.0
 @onready var upgrade_list = $Panel2/ScrollContainer/VBoxContainer 
 @onready var coins_per_second: Label = $CoinsPerSecond
 @onready var desc_label: Label = $Panel2/DescriptionLabel
+@onready var achievement_manager = $Panel3
+@onready var frenzy_sound: AudioStreamPlayer2D = $FrenzySound
 
 signal coins_changed
 signal coin_clicked
@@ -50,8 +53,19 @@ func _on_texture_button_pressed() -> void:
 func activate_frenzy() -> void:
 	is_frenzy_active = true
 	multiplier = 2
-	coin_meter.tint_progress = Color(2, 2, 2) 
+	coin_meter.tint_progress = Color(2, 2, 2)
+
+	frenzy_sound.volume_db = -20
+	frenzy_sound.play()
+	create_tween().tween_property(frenzy_sound, "volume_db", 0, 0.5)
+
 	await get_tree().create_timer(10.0).timeout
+	
+	var tw = create_tween()
+	tw.tween_property(frenzy_sound, "volume_db", -40, 0.5)
+	await tw.finished
+	
+	frenzy_sound.stop()
 	multiplier = 1
 	is_frenzy_active = false
 	coin_meter.value = 0
@@ -64,14 +78,14 @@ func load_upgrades():
 		var error = json.parse(file.get_as_text())
 		if error == OK:
 			upgrades_data = json.data["upgrades"]
-			vincular_botones_escena()
+			bind_scene_buttons()
 
-func vincular_botones_escena():
-	var botones = upgrade_list.get_children()
+func bind_scene_buttons():
+	var buttons = upgrade_list.get_children()
 	
 	for i in range(upgrades_data.size()):
-		if i < botones.size():
-			var btn = botones[i] as Button
+		if i < buttons.size():
+			var btn = buttons[i] as Button
 			var data = upgrades_data[i]
 			
 			btn.set_meta("upgrade_id", data["id"])
@@ -85,7 +99,7 @@ func vincular_botones_escena():
 			if not btn.mouse_exited.is_connected(_on_mouse_exited_upgrade):
 				btn.mouse_exited.connect(_on_mouse_exited_upgrade)
 			
-			actualizar_texto_boton(btn, data)
+			update_button_text(btn, data)
 
 func _on_upgrade_pressed(btn: Button):
 	var id = btn.get_meta("upgrade_id")
@@ -97,41 +111,51 @@ func buy_upgrade(upgrade_id: String, btn: Button):
 			var actual_price = item["base_cost"] * pow(1.15, item["level"])
 			if coins >= actual_price:
 				coins -= actual_price
+				
+				if buy_sound:
+					buy_sound.play()
+					
 				item["level"] += 1
+				
+				if achievement_manager:
+					achievement_manager.check_unlock(upgrade_id, item["level"])
+				
 				btn.self_modulate = Color(0.5, 1.0, 0.5)
+				_play_buy_effects(btn)
+				
 				if item["type"] == "click":
 					amount_per_click += item["power"]
 				else:
 					auto_coins_per_sec += item["power"]
 				
-				actualizar_texto_boton(btn, item)
+				update_button_text(btn, item)
 				_update_ui()
 			else:
-				print("No hay suficiente dinero")
+				print("Not enough money")
 			break
 
-func actualizar_texto_boton(btn: Button, item: Dictionary):
+func update_button_text(btn: Button, item: Dictionary):
 	var price = item["base_cost"] * pow(1.15, item["level"])
 	btn.text = "%s cc | %s | lvl %d" % [format_val(price), item["name"], item["level"]]
 
 func _update_ui() -> void:
 	total_label.text = format_val(coins) + " Coins"
-	coins_per_second.text = str(auto_coins_per_sec) + " coins/s"
+	coins_per_second.text = format_val(auto_coins_per_sec) + " coins/s"
 	emit_signal("coins_changed", coins)
 
 func format_val(value: float) -> String:
 	if value >= 1.0e15: return str(snapped(value / 1.0e15, 0.1)) + "Q"
 	if value >= 1.0e12: return str(snapped(value / 1.0e12, 0.1)) + "T"
 	if value >= 1.0e9: return str(snapped(value / 1.0e9, 0.1)) + "B"
-	if value >= 1.0e6:  return str(snapped(value / 1.0e6, 0.1)) + "M"
-	if value >= 1.0e3:  return str(snapped(value / 1.0e3, 0.1)) + "K"
+	if value >= 1.0e6: return str(snapped(value / 1.0e6, 0.1)) + "M"
+	if value >= 1.0e3: return str(snapped(value / 1.0e3, 0.1)) + "K"
 	return str(floor(value))
 
 func _on_mouse_entered_upgrade(data: Dictionary):
-	var tipo = "Click" if data["type"] == "click" else "Passive"
+	var type = "Click" if data["type"] == "click" else "Passive"
 	var power_text = format_val(data["power"])
 	
-	desc_label.text = "[ %s ]\nEffect: +%s per %s" % [data["name"], power_text, tipo]
+	desc_label.text = "[ %s ]\nEffect: +%s per %s" % [data["name"], power_text, type]
 	desc_label.modulate = Color(1, 1, 1, 1)
 
 func _on_mouse_exited_upgrade():
@@ -159,3 +183,9 @@ func _on_bg_4_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	pass
+
+func _play_buy_effects(btn: Button) -> void:
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.1)
+	tw.tween_property(btn, "scale", Vector2(1, 1), 0.1)
