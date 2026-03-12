@@ -83,7 +83,7 @@
 	{
 	  "id": "alien_laser",
 	  "name": "Alien Destructor Laser",
-	  "base_cost": 100000000000,
+	  "base_cost": 200000000,
 	  "power": 1500000,
 	  "type": "click",
 	  "level": 0
@@ -91,7 +91,7 @@
 	{
 	  "id": "coin_drifter",
 	  "name": "Luxury Coin-Drifter",
-	  "base_cost": 1000000000000,
+	  "base_cost": 10000000000,
 	  "power": 15000000000,
 	  "type": "click",
 	  "level": 0
